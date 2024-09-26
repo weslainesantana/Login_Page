@@ -1,6 +1,8 @@
 package com.weslaine.backend.services;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.weslaine.backend.dtos.LoginDTO;
 import com.weslaine.backend.dtos.MessageResponseDTO;
@@ -14,7 +16,8 @@ public class LoginService {
             return new MessageResponseDTO("login feito com sucesso");
 
         }
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "usuario ou senha incorretos");
 
-        return new MessageResponseDTO("Senha incorreta");
+        // return new MessageResponseDTO("Senha incorreta");
     }
 }
